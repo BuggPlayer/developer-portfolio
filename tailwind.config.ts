@@ -33,12 +33,20 @@ const config: Config = {
         'border': {
           'default': 'var(--border-default)',
           'focus': 'var(--border-focus)',
-        }
+        },
+        // Additional brand colors
+        'purple': { 500: 'var(--color-purple-500)' },
+        'orange': { 500: 'var(--color-orange-500)' },
+        'pink': { 500: 'var(--color-pink-500)' },
+        'cyan': { 500: 'var(--color-cyan-500)' }
       },
       boxShadow: {
         'elevated': 'var(--shadow-lg)',
         'surface': 'var(--shadow-md)',
         'muted': 'var(--shadow-sm)',
+        'modern': 'var(--shadow-xl)',
+        'modern-lg': 'var(--shadow-2xl)',
+        'modern-xl': 'var(--shadow-3xl)',
       },
       spacing: {
         '1': '0.25rem',   // 4px

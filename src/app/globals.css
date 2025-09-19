@@ -28,6 +28,10 @@
   --color-green-500: #10b981;
   --color-yellow-500: #f59e0b;
   --color-red-500: #ef4444;
+  --color-purple-500: #8b5cf6;
+  --color-orange-500: #f97316;
+  --color-pink-500: #ec4899;
+  --color-cyan-500: #06b6d4;
   
   /* Semantic Color Tokens - Light Mode */
   --bg-canvas: var(--color-slate-50);
@@ -54,6 +58,15 @@
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-3xl: 0 35px 60px -12px rgb(0 0 0 / 0.3);
+  
+  /* Brand Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--color-blue-600), var(--color-purple-600));
+  --gradient-secondary: linear-gradient(135deg, var(--color-green-500), var(--color-cyan-500));
+  --gradient-accent: linear-gradient(135deg, var(--color-orange-500), var(--color-pink-500));
+  --gradient-hero: linear-gradient(135deg, var(--color-blue-50), var(--color-purple-50));
 }
 
 /* Dark Mode Semantic Tokens */
@@ -73,6 +86,12 @@
   
   --border-default: var(--color-slate-700);
   --border-focus: var(--color-blue-400);
+  
+  /* Dark Mode Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--color-blue-500), var(--color-purple-500));
+  --gradient-secondary: linear-gradient(135deg, var(--color-green-400), var(--color-cyan-400));
+  --gradient-accent: linear-gradient(135deg, var(--color-orange-400), var(--color-pink-400));
+  --gradient-hero: linear-gradient(135deg, var(--color-slate-800), var(--color-slate-700));
 }
 
   html {
@@ -84,6 +103,143 @@
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-canvas);
   color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  line-height: 1.6;
+}
+
+/* ========================================
+   MODERN THEME UTILITIES
+   ======================================== */
+
+/* Gradient Text */
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-secondary {
+  background: var(--gradient-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-accent {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient Backgrounds */
+.bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.bg-gradient-secondary {
+  background: var(--gradient-secondary);
+}
+
+.bg-gradient-accent {
+  background: var(--gradient-accent);
+}
+
+.bg-gradient-hero {
+  background: var(--gradient-hero);
+}
+
+/* Glass Morphism */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Modern Shadows */
+.shadow-modern {
+  box-shadow: var(--shadow-xl);
+}
+
+.shadow-modern-lg {
+  box-shadow: var(--shadow-2xl);
+}
+
+.shadow-modern-xl {
+  box-shadow: var(--shadow-3xl);
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+/* Pulse Animation */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Gradient Border */
+.gradient-border {
+  position: relative;
+  background: var(--bg-surface);
+  border-radius: 0.5rem;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: var(--gradient-primary);
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
 }
 
 /* ========================================
